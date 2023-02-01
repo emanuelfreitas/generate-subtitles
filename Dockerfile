@@ -9,7 +9,7 @@ RUN echo "deb http://deb.debian.org/debian buster main contrib non-free" > /etc/
     apt-get autoremove -y && \
     rm -rf /var/lib/apt/lists/*
 
-RUN pip install --no-cache-dir openai-whisper googletrans
+RUN pip install --no-cache-dir openai-whisper googletrans==4.0.0rc1
 
 COPY src /app
 
