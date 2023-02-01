@@ -51,8 +51,11 @@ for path, subdirs, files in os.walk(filePath):
             text = segment['text']
             segmentId = segment['id']+1
             textEN = text[1:] if text[0] == ' ' else text
-            translation = translator.translate(textEN, src='en', dest='pt')
-            textPT = translation.text
+            if textEN is not None and textEN != '':
+                translation = translator.translate(textEN, src='en', dest='pt')
+                textPT = translation.text
+            else:
+                textPT = textEN
 
 
             with open(srtFilenameEN, 'a+', encoding='utf-8') as srtFile:
